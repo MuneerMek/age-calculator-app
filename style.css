@@ -117,6 +117,7 @@ h6 {
   --off-black: 0, 0%, 8%;
   /* Typography */
   --fs-400: 1rem;
+  --fs-500: 1.5rem;
   --fs-600: 2rem;
   --fs-800: 3.5rem;
 
@@ -131,7 +132,7 @@ body {
 }
 
 main {
-  padding: 3rem 2rem;
+  padding: 3rem 1.5rem;
   background-color: hsl(var(--white));
   display: grid;
   place-content: center;
@@ -145,8 +146,10 @@ form {
 }
 
 .input-group input {
-  padding: 1rem;
+  padding: 1rem 0 1rem 1rem;
   width: 100%;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-700);
   border-radius: 0.5rem;
   border: 1px solid hsl(var(--light-grey));
 }
@@ -176,7 +179,7 @@ form {
   left: 0;
   width: 100%; /* Make the line span the full width of the container */
   height: 1px;
-  background-color: black; /* Color of the line */
+  background-color: hsl(var(--off-black), 0.2); /* Color of the line */
   z-index: -1; /* pseudo-element appears below parent */
 }
 .arrow-button:hover,
