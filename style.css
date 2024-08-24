@@ -116,6 +116,7 @@ h6 {
   --smokey-grey: 0, 1%, 44%;
   --off-black: 0, 0%, 8%;
   /* Typography */
+  --fs-300: 0.75rem;
   --fs-400: 1rem;
   --fs-500: 1.5rem;
   --fs-600: 2rem;
@@ -137,6 +138,7 @@ main {
   display: grid;
   place-content: center;
   gap: 2rem;
+  border-radius: 1rem 1rem 7.5rem 1rem;
 }
 
 form {
@@ -145,6 +147,13 @@ form {
   gap: 1rem;
 }
 
+.input-group label {
+  font-size: var(--fs-300);
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  color: hsl(var(--smokey-grey));
+  font-weight: var(--fw-700);
+}
 .input-group input {
   padding: 1rem 0 1rem 1rem;
   width: 100%;
@@ -196,4 +205,14 @@ form {
 }
 .fc-purple {
   color: hsl(var(--purple));
+}
+
+/* Media Queries */
+@media (min-width: 24rem) {
+  .container {
+    justify-content: end;
+  }
+  .arrow-button {
+    background-size: 2rem;
+  }
 }
