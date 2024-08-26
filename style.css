@@ -142,7 +142,7 @@ main {
   display: grid;
   place-content: center;
   gap: 2rem;
-  border-radius: 1rem 1rem 7.5rem 1rem;
+  border-radius: 2rem 2rem 7.5rem 2rem;
 }
 
 form {
@@ -159,6 +159,7 @@ form {
   font-weight: var(--fw-700);
 }
 .input-group input {
+  margin-top: 0.25rem;
   padding: 1rem 0 1rem 1rem;
   width: 100%;
   font-size: var(--fs-400);
@@ -211,9 +212,9 @@ form {
 }
 
 /* Media Queries */
-@media (min-width: 24rem) {
+@media (min-width: 40rem) {
   :root {
-    --fs-800: 4rem;
+    --fs-800: 6rem;
   }
   body {
     padding-top: 10.5rem;
@@ -221,16 +222,24 @@ form {
   main {
     padding: 3.25rem;
     gap: 0;
+    border-radius: 1rem 1rem 10rem 1rem;
   }
   form {
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 2rem;
+  }
+  .input-group label {
+    font-size: var(--fs-400);
+  }
+  .input-group input {
+    margin-top: 0.5rem;
+    font-size: var(--fs-600);
   }
   .container {
     justify-content: end;
   }
   .arrow-button {
     padding: 3rem;
-    background-size: 2.5rem;
+    background-size: 2.75rem;
   }
 }
