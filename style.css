@@ -141,11 +141,17 @@ main {
   height: fit-content;
   display: grid;
   place-content: center;
-  gap: 2rem;
+  gap: 1rem;
   border-radius: 2rem 2rem 7.5rem 2rem;
 }
 
 form {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+}
+
+.grid-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -167,6 +173,16 @@ form {
   border-radius: 0.5rem;
   border: 1px solid hsl(var(--light-grey));
 }
+.input-group input:focus {
+  outline-color: hsl(var(--purple));
+}
+
+.error-msg {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: hsl(var(--light-red));
+}
 
 .container {
   position: relative;
@@ -175,6 +191,7 @@ form {
   z-index: 1;
 }
 .arrow-button {
+  align-self: center;
   padding: 2rem;
   max-height: 4rem;
   background-color: hsl(var(--purple));
@@ -186,15 +203,14 @@ form {
   border-radius: 50%;
   cursor: pointer;
 }
-.arrow-button::before {
-  content: "";
+.bar {
   position: absolute;
   top: 50%; /* Position the line in the middle of the button */
   left: 0;
   width: 100%; /* Make the line span the full width of the container */
   height: 1px;
   background-color: hsl(var(--off-black), 0.2); /* Color of the line */
-  z-index: -1; /* pseudo-element appears below parent */
+  z-index: -1;
 }
 .arrow-button:hover,
 .arrow-button:focus {
@@ -224,16 +240,23 @@ form {
     gap: 0;
     border-radius: 1rem 1rem 10rem 1rem;
   }
-  form {
+  .grid-group {
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+  }
+  form {
+    grid-template-rows: 1fr auto;
+    gap: 0;
   }
   .input-group label {
     font-size: var(--fs-400);
   }
   .input-group input {
     margin-top: 0.5rem;
+    padding-left: 1.5rem;
     font-size: var(--fs-600);
+  }
+  .error-msg {
+    margin-top: 0.5rem;
   }
   .container {
     justify-content: end;
