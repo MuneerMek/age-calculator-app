@@ -1,16 +1,35 @@
 const form = document.querySelector("#age-calc");
+const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let isValid = true; // Reset validity on each submit
 
-  const day = document.querySelector(`input[name="day"]`).value.trim();
-  const month = document.querySelector(`input[name="month"]`).value.trim();
-  const year = document.querySelector(`input[name="year"]`).value.trim();
+  let day = document.querySelector(`input[name="day"]`).value.trim();
+  let month = document.querySelector(`input[name="month"]`).value.trim();
+  let year = document.querySelector(`input[name="year"]`).value.trim();
+
+  // Make a leap year exception
+  // Find some way to fetch the current date for comparison, cannot exceed current year
+  // Calculate numbers relative to present day, and insert them into webpage
 
   // Validate day
-  if (day === "") {
+  if (
+    day === "" ||
+    Math.floor(day) > daysInMonth[Math.floor(month) - 1] ||
+    Math.floor(day) > 31
+  ) {
     isValid = false;
+    if (
+      Math.floor(day) > daysInMonth[Math.floor(month) - 1] ||
+      Math.floor(day) > 31
+    ) {
+      document.querySelector(`#day + .error-msg`).innerHTML =
+        "Must be a valid day";
+    } else {
+      document.querySelector(`#day + .error-msg`).innerHTML =
+        "This field is required";
+    }
     // Reveal error msg
     document.querySelector(`#day + .error-msg`).removeAttribute("hidden");
     // Set border & outline color on input field to red
@@ -35,8 +54,15 @@ form.addEventListener("submit", (e) => {
   }
 
   // Validate month
-  if (month === "") {
+  if (month === "" || Math.floor(month) > 12) {
     isValid = false;
+    if (Math.floor(month) > 12) {
+      document.querySelector(`#month + .error-msg`).innerHTML =
+        "Must be a valid month";
+    } else {
+      document.querySelector(`#month + .error-msg`).innerHTML =
+        "This field is required";
+    }
     // Reveal error msg
     document.querySelector(`#month + .error-msg`).removeAttribute("hidden");
     // Set border & outline color on input field to red
@@ -61,7 +87,7 @@ form.addEventListener("submit", (e) => {
   }
 
   // Validate year
-  if (month === "") {
+  if (year === "") {
     isValid = false;
     // Reveal error msg
     document.querySelector(`#year + .error-msg`).removeAttribute("hidden");
