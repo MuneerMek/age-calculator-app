@@ -1,5 +1,9 @@
 const form = document.querySelector("#age-calc");
 const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth() + 1; // adjust for zero-based indexing
+const currentDay = currentDate.getDate();
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -10,7 +14,6 @@ form.addEventListener("submit", (e) => {
   let year = document.querySelector(`input[name="year"]`).value.trim();
 
   // Make a leap year exception
-  // Find some way to fetch the current date for comparison, cannot exceed current year
   // Calculate numbers relative to present day, and insert them into webpage
 
   // Validate day
@@ -20,6 +23,7 @@ form.addEventListener("submit", (e) => {
     Math.floor(day) > 31
   ) {
     isValid = false;
+    // Checks if the input day exceeds the input month's total days, OR exceeds 31 in general
     if (
       Math.floor(day) > daysInMonth[Math.floor(month) - 1] ||
       Math.floor(day) > 31
@@ -87,8 +91,16 @@ form.addEventListener("submit", (e) => {
   }
 
   // Validate year
-  if (year === "") {
+  if (year === "" || year > currentYear) {
     isValid = false;
+    // Compares the input year to current date, input cannot exceed current year
+    if (year > currentYear) {
+      document.querySelector(`#year + .error-msg`).innerHTML =
+        "Must be in the past";
+    } else {
+      document.querySelector(`#year + .error-msg`).innerHTML =
+        "This field is required";
+    }
     // Reveal error msg
     document.querySelector(`#year + .error-msg`).removeAttribute("hidden");
     // Set border & outline color on input field to red
