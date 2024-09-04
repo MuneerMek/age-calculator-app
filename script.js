@@ -1,21 +1,32 @@
 const form = document.querySelector("#age-calc");
-const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth() + 1; // adjust for zero-based indexing
 const currentDay = currentDate.getDate();
+// Calculate numbers relative to present day, and insert them into following elements
+const yearsLived = document.querySelector("#years-lived");
+const monthsLived = document.querySelector("#months-lived");
+const daysLived = document.querySelector("#days-lived");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let isValid = true; // Reset validity on each submit
-
+  // Reset form defaults
+  yearsLived.innerHTML = "- -";
+  monthsLived.innerHTML = "- -";
+  daysLived.innerHTML = "- -";
+  // Obtain input values
   let day = document.querySelector(`input[name="day"]`).value.trim();
   let month = document.querySelector(`input[name="month"]`).value.trim();
   let year = document.querySelector(`input[name="year"]`).value.trim();
 
-  // Make a leap year exception
-  // Calculate numbers relative to present day, and insert them into webpage
-
+  // Check for leap year and add February 29th
+  if (year % 4 === 0) {
+    daysInMonth[1] = 29;
+  } else {
+    daysInMonth[1] = 28;
+  }
   // Validate day
   if (
     day === "" ||
@@ -123,8 +134,11 @@ form.addEventListener("submit", (e) => {
     document.querySelector(`label[for="year"]`).style.color =
       "hsl(var(--smokey-grey))";
   }
-
+  // Find a solution to negative months and days, using if statements
   if (isValid) {
-    form.reset(); // Reset form fields
+    yearsLived.innerHTML = `${currentYear - year}`;
+    monthsLived.innerHTML = `${currentMonth - month}`;
+    daysLived.innerHTML = `${currentDay - day}`;
+    // form.reset();
   }
 });
