@@ -82,7 +82,7 @@ h6 {
 }
 @font-face {
   font-family: "Poppins";
-  src: url("/assets/fonts/Poppins-Italic.ttf");
+  src: url("assets/fonts/Poppins-Italic.ttf");
   font-style: italic;
 }
 @font-face {
