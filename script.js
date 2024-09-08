@@ -11,11 +11,9 @@ const daysLived = document.querySelector("#days-lived");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let isValid = true; // Reset validity on each submit
-  // Reset form defaults
-  yearsLived.innerHTML = "- -";
-  monthsLived.innerHTML = "- -";
-  daysLived.innerHTML = "- -";
+  // Reset validity on each submit
+  let isValid = true;
+
   // Obtain input values
   let day = document.querySelector(`input[name="day"]`).value.trim();
   let month = document.querySelector(`input[name="month"]`).value.trim();
@@ -27,6 +25,7 @@ form.addEventListener("submit", (e) => {
   } else {
     daysInMonth[1] = 28;
   }
+
   // Validate day
   if (
     day === "" ||
@@ -134,11 +133,24 @@ form.addEventListener("submit", (e) => {
     document.querySelector(`label[for="year"]`).style.color =
       "hsl(var(--smokey-grey))";
   }
-  // Find a solution to negative months and days, using if statements
+  // Insert elements into HTML, rollback month and/or year if necessary
   if (isValid) {
-    yearsLived.innerHTML = `${currentYear - year}`;
-    monthsLived.innerHTML = `${currentMonth - month}`;
-    daysLived.innerHTML = `${currentDay - day}`;
-    // form.reset();
+    let remainingDays = currentDay - day;
+    let remainingMonths = currentMonth - month;
+    let remainingYears = currentYear - year;
+
+    if (remainingDays < 0) {
+      remainingMonths--;
+      remainingDays += daysInMonth[currentMonth - 2]; // Adjust for zero-based indexing
+    }
+
+    if (remainingMonths < 0) {
+      remainingYears--;
+      remainingMonths += 12;
+    }
+
+    daysLived.innerHTML = `${remainingDays}`;
+    monthsLived.innerHTML = `${remainingMonths}`;
+    yearsLived.innerHTML = `${remainingYears}`;
   }
 });

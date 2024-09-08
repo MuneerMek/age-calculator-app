@@ -238,7 +238,7 @@ input[type="number"] {
 }
 
 /* Media Queries */
-@media (min-width: 40rem) {
+@media (min-width: 44rem) {
   :root {
     --fs-800: 6rem;
   }
