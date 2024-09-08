@@ -70,15 +70,14 @@ h6 {
 }
 
 /* Fonts */
-/* Fonts */
 @font-face {
   font-family: "Poppins";
-  src: url("/assets/fonts/Poppins-Regular.ttf");
+  src: url("assets/fonts/Poppins-Regular.ttf");
   font-weight: normal;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("/assets/fonts/Poppins-Bold.ttf");
+  src: url("assets/fonts/Poppins-Bold.ttf");
   font-weight: bold;
 }
 @font-face {
@@ -88,18 +87,18 @@ h6 {
 }
 @font-face {
   font-family: "Poppins";
-  src: url("/assets/fonts/Poppins-BoldItalic.ttf");
+  src: url("assets/fonts/Poppins-BoldItalic.ttf");
   font-weight: bold;
   font-style: italic;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("/assets/fonts/Poppins-ExtraBold.ttf");
+  src: url("assets/fonts/Poppins-ExtraBold.ttf");
   font-weight: 800; /* Custom font weight for "Extra Bold" */
 }
 @font-face {
   font-family: "Poppins";
-  src: url("/assets/fonts/Poppins-ExtraBoldItalic.ttf");
+  src: url("assets/fonts/Poppins-ExtraBoldItalic.ttf");
   font-weight: 800; /* Custom font weight for "Extra Bold" */
   font-style: italic;
 }
@@ -205,7 +204,7 @@ input[type="number"] {
   padding: 2rem;
   max-height: 4rem;
   background-color: hsl(var(--purple));
-  background-image: url("/assets/images/icon-arrow.svg");
+  background-image: url("assets/images/icon-arrow.svg");
   background-size: 1.5rem;
   background-position: center;
   background-repeat: no-repeat;
